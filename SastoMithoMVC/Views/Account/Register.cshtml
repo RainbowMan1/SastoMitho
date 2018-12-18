@@ -1,0 +1,95 @@
+﻿@model SastoMithoMVC.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<body id="LoginForm">
+    <br>
+    <br>
+    <br>
+    <br>
+    <link href="~/Content/style(signup).css" rel="stylesheet">
+    <div class="container">
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>Login to SastoMitho</h2>
+                    <p>Please enter your credentials</p>
+                </div>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+
+
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+
+                    </div>
+
+                    <div class="form-group">
+
+
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+
+                    </div>
+
+                    <div class="form-group">
+
+
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+
+                    </div>
+
+                    <div class="form-group">
+
+
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+
+                    </div>
+
+
+                    <div class="form-group">
+
+
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+
+                    </div>
+
+                    @*<div class="form-group">
+
+                <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+
+            </div>*@
+
+                    <!--<input type="checkbox" name="address" value="location" > I am not at my delivery location <br>-->
+                    <!--<button type="submit" class="btn btn-secondary" style="margin-bottom: 5px;">Track My Location</button> <br>-->
+                    <!--<div class="Location" >
+          <p><a href="index.html" target="_blank" class="" data-toggle="modal" data-target="#reservationModal"><input type="checkbox" name="address" value="location" > I am not at my delivery location</a></p>
+        <a href="#" title="la hai ta">Click <u>here</u> if you are at your delivery location</a>
+        </div>-->
+                    <input type="submit" class="btn btn-primary" style="margin-bottom: 5px;" value="Register">
+
+                    <br>
+
+                    <p>Have an account? <a href="login.html">Login</a> </p>
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

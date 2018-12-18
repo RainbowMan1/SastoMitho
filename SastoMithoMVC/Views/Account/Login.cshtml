@@ -1,0 +1,53 @@
+﻿@using SastoMithoMVC.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<body id="LoginForm">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <link href="~/Content/style(login).css" rel="stylesheet">
+    <div class="" style="max-width: 435px; margin: auto;">
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>Login to SastoMitho</h2>
+                    <p>Please enter your credentials</p>
+                </div>
+
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "Login" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe)
+                    <div class="forgot">
+                        <a href="reset.html">Forgot password?</a>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Log In" style="margin-bottom: 10px;" />
+                }
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                    <p>New?  <a href="signup.html">Register as User</a> </p>
+
+                
+            </div>
+        </div>
+    </div>
+
+
+
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SastoMithoMVC", "SastoMithoMVC\SastoMithoMVC.csproj", "{207939E4-3E29-4BAB-B1A3-CED0783CFA55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SastoMithoClassLibrary", "SastoMithoClassLibrary\SastoMithoClassLibrary.csproj", "{1D8D8065-76A3-4109-9A28-E65048A61339}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{207939E4-3E29-4BAB-B1A3-CED0783CFA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{207939E4-3E29-4BAB-B1A3-CED0783CFA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{207939E4-3E29-4BAB-B1A3-CED0783CFA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{207939E4-3E29-4BAB-B1A3-CED0783CFA55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D8D8065-76A3-4109-9A28-E65048A61339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D8D8065-76A3-4109-9A28-E65048A61339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D8D8065-76A3-4109-9A28-E65048A61339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D8D8065-76A3-4109-9A28-E65048A61339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE5819F6-F1AA-49AA-A13A-BCC745319ECB}
+	EndGlobalSection
+EndGlobal

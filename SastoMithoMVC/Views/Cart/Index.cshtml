@@ -1,0 +1,161 @@
+﻿@using SastoMithoMVC.Models
+@using SastoMithoClassLibrary.Models
+@model CartViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<body id="LoginForm">
+    <link href="~/Content/style(cart).css" rel="stylesheet">
+    <section class="jumbotron text-center" style="padding-top: 100px; background: transparent;">
+        <div class="container">
+            <h1 class="jumbotron-heading">Your Cart</h1>
+        </div>
+    </section>
+
+    <div class="strech" style="padding: 0 30px;">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="carttable" style="background: rgba(24, 24, 24, .8);">
+                        <thead>
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Available</th>
+                                <th scope="col" class="text-center">Quantity</th>
+                                <th scope="col" class="text-right">Price</th>
+                                <th scope="col" class="text-right">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (OrderedCartItemModel item in Model.Items)
+                            {
+                                <tr>
+                                    <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                    <td>@item.Name</td>
+                                    <td>In stock</td>
+                                    <td style="text-align: center;">@item.Quantity</td>
+                                    <td class="text-right">@item.Price </td>
+                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                </tr>
+                            }
+                            @{decimal total = 0; }
+                            @foreach (OrderedCartItemModel item in Model.Items)
+                            { total = item.Price * item.Quantity + total; }
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Sub Total</td>
+                                <td class="text-right">@total</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Delivery Charge</td>
+                                <td class="text-right">0 </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><strong>Total</strong></td>
+                                <td class="text-right"><strong>@total</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col mb-2">
+                <div class="row">
+                    <div class="col-sm-12  col-md-6">
+                        <button class="btn btn-block btn-light">Continue Shopping</button>
+                    </div>
+                    <div class="col-sm-12 col-md-6 text-right">
+                        <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="site-footer site-bg-dark site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 site-animate">
+                            <h2 class="site-heading-2">SastoMitho</h2>
+                            <a href="#"><img src=@Url.Content("~/Images/logo.png") style="max-height: 100px;" ></a>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3 site-animate">
+                            <div class="site-footer-widget mb-4">
+                                <h2 class="site-heading-2">The Restaurant</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">About Us</a></li>
+                                    <li><a href="#" class="py-2 d-block">Chefs</a></li>
+                                    <li><a href="#" class="py-2 d-block">Events</a></li>
+                                    <li><a href="#" class="py-2 d-block">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 site-animate">
+                            <div class="site-footer-widget mb-4">
+                                <h2 class="site-heading-2">Useful links</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">Foods</a></li>
+                                    <li><a href="#" class="py-2 d-block">Drinks</a></li>
+                                    <li><a href="#" class="py-2 d-block">Breakfast</a></li>
+                                    <li><a href="#" class="py-2 d-block">Brunch</a></li>
+                                    <li><a href="#" class="py-2 d-block">Dinner</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2 site-animate">
+                            <div class="site-footer-widget mb-4">
+                                <h2 class="site-heading-2">Useful links</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="py-2 d-block">Foods</a></li>
+                                    <li><a href="#" class="py-2 d-block">Drinks</a></li>
+                                    <li><a href="#" class="py-2 d-block">Breakfast</a></li>
+                                    <li><a href="#" class="py-2 d-block">Brunch</a></li>
+                                    <li><a href="#" class="py-2 d-block">Dinner</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row site-animate">
+                <div class="col-md-12 text-center">
+                    <div class="site-footer-widget mb-4">
+                        <ul class="site-footer-social list-unstyled ">
+                            <li class="site-animate"><a href="#" title=""><span class="icon-twitter"></span></a></li>
+                            <li class="site-animate"><a href="#" title=""><span class="icon-facebook"></span></a></li>
+                            <li class="site-animate"><a href="#" title=""><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center">
+                    <p>
+                        &copy; Copyright
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | SastoMitho
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+

@@ -1,0 +1,238 @@
+﻿@using SastoMithoClassLibrary.Models
+@using SastoMithoMVC.Models
+@model MenuModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container" style="padding-top: 75px;">
+    <div class="row profile">
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <h2 class="display-4">Categories</h2>
+                <div class="profile-usermenu">
+                    <ul class="nav site-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
+                        @{int x = 1; }
+
+                        @foreach (CategoryModel category in Model.Menu)
+                        {
+                            if (x == 1)
+                            {
+                                <li class="nav-item site-animate">
+                                    <a class="nav-link active" id=@category.Id.ToString() data-toggle="pill" href="#@category.Name.ToString().Replace(" ", string.Empty)" role="tab" aria-controls="pills-breakfast" aria-selected="true">@category.Name</a>
+                                </li>
+                                x++;
+                            }
+                            else
+                            {
+                                <li class="nav-item site-animate">
+                                    <a class="nav-link" id=@category.Id.ToString() data-toggle="pill" href="#@category.Name.ToString().Replace(" ", string.Empty)" role="tab" aria-controls="pills-breakfast" aria-selected="false">@category.Name</a>
+                                </li>
+                                x++;
+                            }
+                        }
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+        </div>
+        
+            <div class="col-md-9">
+                <div class="profile-content">
+                    <section class="site-section" id="section-menu">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center mb-5 site-animate">
+                                    <h2 class="display-4">Delicious Menu</h2>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-7">
+                                            <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 text-center">
+                                    <div class="tab-content text-left">
+                                        @{int y = 1; }
+                                        @foreach (CategoryModel category in Model.Menu)
+                                        {
+                                            if (y == 1)
+                                            {
+                                                <div class="tab-pane fade show active" id="@category.Name.ToString().Replace(" ", string.Empty)" role="tabpanel" aria-labelledby="pills-breakfast-tab">
+                                                    <div class="row">
+                                                        <div class="col-md-12 site-animate">
+                                                            @foreach (ItemModel item in category.Items)
+                                                            {
+                                                                <div class="media menu-item">
+                                                                    <img class="mr-3" src=" ~/Images/menu_1.jpg" class="img-fluid" alt="Free Template by colorlib.com">
+                                                                    <div class="media-body">
+                                                                        <h5 class="mt-0 menu-hx">
+                                                                            @item.Name
+                                                                            <span><div class="accordion-toggle" data-toggle="collapse" data-target="#@item.Name.ToString().Replace(" ", string.Empty)details" aria-expanded="false"><span class="icon-login"></span></div></span>
+
+                                                                        </h5>
+
+                                                                        <h6 class="text-primary menu-price">
+                                                                            <font style="padding-right: 120px;">Rs.@Math.Round(item.Price, 0)</font>
+                                                                            
+
+                                                                            @{Html.RenderPartial("AddtoCart", new AddtoCartViewModel { Id = item.Id});}
+
+
+
+                                                                        </h6>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="@item.Name.ToString().Replace(" ", string.Empty)details" class="accordion-body collapse in" style="visibility: visible;">
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                                    </p>
+
+                                                                </div>
+                                                            }
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                y++;
+                                            }
+                                            else
+                                            {<div class="tab-pane fade" id="@category.Name.ToString().Replace(" ", string.Empty)" role="tabpanel" aria-labelledby="pills-breakfast-tab">
+                                                    <div class="row">
+                                                        <div class="col-md-12 site-animate">
+                                                            @foreach (ItemModel item in category.Items)
+                                                            {
+                                                                <div class="media menu-item">
+                                                                    <img class="mr-3" src=" ~/Images/menu_1.jpg" class="img-fluid" alt="Free Template by colorlib.com">
+                                                                    <div class="media-body">
+                                                                        <h5 class="mt-0 menu-hx">
+                                                                            @item.Name
+                                                                            <span><div class="accordion-toggle" data-toggle="collapse" data-target="#@item.Name.ToString().Replace(" ", string.Empty)details"><span class="icon-login"></span></div></span>
+
+                                                                        </h5>
+
+                                                                        <h6 class="text-primary menu-price">
+                                                                            <font style="padding-right: 120px;">Rs.@Math.Round(item.Price, 0)</font>
+
+
+                                                                            @{Html.RenderPartial("AddtoCart", new AddtoCartViewModel { Id = item.Id });}
+
+
+                                                                        </h6>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="@item.Name.ToString().Replace(" ", string.Empty)details" class="collapse" style="visibility: visible;">
+                                                                    <p>
+                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                                                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                                                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                                                    </p>
+
+                                                                </div>
+                                                            }
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                y++;
+                                            }
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+                                                                    
+</div>
+
+
+
+
+<footer class="site-footer site-bg-dark site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4 site-animate">
+                        <h2 class="site-heading-2">SastoMitho</h2>
+                        <a href="/Account/Login"><img src="logo.png" style="max-height: 100px;"></a>
+                    </div>
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 site-animate">
+                        <div class="site-footer-widget mb-4">
+                            <h2 class="site-heading-2">The Restaurant</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="py-2 d-block">About Us</a></li>
+                                <li><a href="#" class="py-2 d-block">Chefs</a></li>
+                                <li><a href="#" class="py-2 d-block">Events</a></li>
+                                <li><a href="#" class="py-2 d-block">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 site-animate">
+                        <div class="site-footer-widget mb-4">
+                            <h2 class="site-heading-2">Useful links</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="py-2 d-block">Foods</a></li>
+                                <li><a href="#" class="py-2 d-block">Drinks</a></li>
+                                <li><a href="#" class="py-2 d-block">Breakfast</a></li>
+                                <li><a href="#" class="py-2 d-block">Brunch</a></li>
+                                <li><a href="#" class="py-2 d-block">Dinner</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 site-animate">
+                        <div class="site-footer-widget mb-4">
+                            <h2 class="site-heading-2">Useful links</h2>
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="py-2 d-block">Foods</a></li>
+                                <li><a href="#" class="py-2 d-block">Drinks</a></li>
+                                <li><a href="#" class="py-2 d-block">Breakfast</a></li>
+                                <li><a href="#" class="py-2 d-block">Brunch</a></li>
+                                <li><a href="#" class="py-2 d-block">Dinner</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row site-animate">
+            <div class="col-md-12 text-center">
+                <div class="site-footer-widget mb-4">
+                    <ul class="site-footer-social list-unstyled ">
+                        <li class="site-animate"><a href="#" title=""><span class="icon-twitter"></span></a></li>
+                        <li class="site-animate"><a href="#" title=""><span class="icon-facebook"></span></a></li>
+                        <li class="site-animate"><a href="#" title=""><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <p>
+                    &copy; Copyright
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | SastoMitho
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+

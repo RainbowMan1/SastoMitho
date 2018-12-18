@@ -1,0 +1,26 @@
+﻿@model SastoMithoMVC.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+
+<p>
+    @foreach (AuthenticationDescription p in loginProviders)
+    {
+        if (p.AuthenticationType == "Google")
+        {
+            <button type="submit" class="loginBtn loginBtn--google" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+        }
+        else
+        {
+            <button type="submit" class="loginBtn loginBtn--facebook" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+        }
+    }
+</p>
+          
+        }
+    
+}

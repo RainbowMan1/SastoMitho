@@ -1,0 +1,9 @@
+﻿@using SastoMithoMVC.Models
+@model AddtoCartViewModel
+@using (Html.BeginForm("AddtoCart", "Menu", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <input type="number" name="Quantity" style="width: 50px;">
+
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@Model.Id"><button type="submit" class="btn btn-primary" style="margin-bottom: 10px;"><span class="icon-shopping-cart"></span></button>
+}

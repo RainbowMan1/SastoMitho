@@ -57,14 +57,12 @@ namespace SastoMithoMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "416216015558401",
-            //   appSecret: "41a2f7cf29d0586cc32846ecbef8ee6e");
+
             var x = new FacebookAuthenticationOptions();
             x.Scope.Add("email");
             x.Scope.Add("public_profile");
-            x.AppId = "416216015558401";
-            x.AppSecret = "41a2f7cf29d0586cc32846ecbef8ee6e";
+            x.AppId = "...";
+            x.AppSecret = "...";
             x.Provider = new FacebookAuthenticationProvider()
             {
                 OnAuthenticated = async context =>
@@ -87,8 +85,8 @@ namespace SastoMithoMVC
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "22723087200-opo2i7qlsirg0tbg7nnar3hb237vr4el.apps.googleusercontent.com",
-                ClientSecret = "k2rHpFZ1dDUCwQkJombChGWS"
+                ClientId = "...",
+                ClientSecret = "..."
             });
         }
     }
